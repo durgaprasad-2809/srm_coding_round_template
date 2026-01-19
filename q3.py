@@ -67,9 +67,22 @@ def find_overloaded_users(events):
         set()
     """
     # TODO: Implement your solution here
-    pass
-
-
+    from collections import defaultdict, deque
+    user_events = defaultdict(list)
+    overloaded_users = set()
+    for user_id, timestamp in events:
+        user_events[user_id].append(timestamp)
+    for user_id, timestamps in user_events.items():
+        timestamps.sort()
+        window = deque()
+        for t in timestamps:
+            window.append(t)
+            while window and t - window[0] >= 10:
+                window.popleft()
+            if len(window) >= 3:
+                overloaded_users.add(user_id)
+                break
+    return overloaded_users
 if __name__ == "__main__":
     # Test your solution here
     events = [
