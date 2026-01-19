@@ -44,6 +44,7 @@ Input: []  → Output: 0
 
 
 def compressed_stack_length(lst):
+    
     """
     Calculate the number of elements remaining after cancellations.
 
@@ -64,9 +65,13 @@ def compressed_stack_length(lst):
         >>> compressed_stack_length([])
         0
     """
-    # TODO: Implement your solution here
-    pass
-
+    # TODO:
+    #  Implement your solution here
+    ans=[]
+    for i in range(1,len(lst)):
+        if lst[i]!=lst[i-1]:
+          ans.append(lst[i-1])
+    return len(ans)
 
 if __name__ == "__main__":
     # Test your solution here
