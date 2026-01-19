@@ -52,8 +52,16 @@ def first_stable_character(s):
         None
     """
     # TODO: Implement your solution here
-    pass
-
+    n = len(s)
+    i = 0   
+    while i < n:
+        char = s[i]
+        start = i
+        while i < n and s[i] == char:
+            i += 1
+        end = i
+        if end - start > 1:  # Check if the character appears at least twice
+            return char
 
 if __name__ == "__main__":
     # Test your solution here
